@@ -2,18 +2,46 @@
 
 <h3>Get ready to eat burgers</h3>
 
+
+
+<h4>Burgers not eaten.</h4>
 <ul>
   {{#each burgers}}
-  	<li>
-  	   <p>ID: {{this.id}}</p>
-			 <p>Name: {{this.burger_name}}</p>
-       <p>Devoured: {{this.devoured}}</p>
-  	</li>
+		{{#unless this.devoured}}
+  <li>
+    <p>{{this.id}}. {{this.burger_name}}
+      <span>
+        <form method="POST" action="/burger/update?_method=PUT">
+          <input type="hidden" name="id" value="{{this.id}}">
+          <button type="submit">Devour burger!</button>
+        </form>
+      </span>
+    </p>
+  </li>
+	{{/unless}}
   {{/each}}
 </ul>
+<hr>
+<h4>Burgers that have been eaten</h4>
 
-<form action="/" method="POST">
-	<textarea type="text" name="task"></textarea>
+<ul>
+  {{#each burgers}}
+		{{#if this.devoured}}
+  <li>
+    <p>{{this.id}}. {{this.burger_name}} </p>
+		<br>
+  </li>
+	{{/if}}
+  {{/each}}
+</ul>
+<hr>
 
-	<button type="submit">Submit</button>
+<h2>Add burger</h2>
+
+<form method="POST" action="/burger/add">
+
+  <textarea type="text" name="name"></textarea>
+  <button type="submit">Add New Burger</button>
+
 </form>
+

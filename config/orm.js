@@ -5,32 +5,38 @@ var connection = require("../config/connection.js");
 var orm = {
     selectAll: function(table, cb) {
         // var queryString = "SELECT * FROM ?;";
-        var queryString = "SELECT * FROM burgers;";
+        var queryString = `SELECT * FROM ${table};`;
         // connection.query(queryString, [`table = '${table}'`], function(err, result){
             connection.query(queryString, function(err, result){
             if(err) throw err;
-            console.log("orm.js page")
+            console.log("orm.js selectAll()")
             console.log(result);
             cb(result);
         })
         
     },
 
-    insertOne: function(newName) {
-        var queryString = `INSERT INTO burgers (burger_name) VALUES ('${newName}'); `;
-        connection.query(queryString, function(err, result) {
-            if (err) throw err;
+    insertOne: function(table, name, cb) {
+        var queryString = `INSERT INTO ${table} (burger_name) VALUES ('${name}'); `;
+        connection.query(queryString, function(err, result){
+            if(err) throw err;
+            console.log("orm.js insertOne()")
             console.log(result);
+            cb(result);
           });
     },
 
-    updateOne: function(id) {
-        var queryString = `UPDATE burgers SET devoured = true WHERE id = '${id}'; `;
+    updateOne: function(table, id, cb) {
+        var queryString = `UPDATE ${table} SET devoured = true WHERE id = '${id}'; `;
         connection.query(queryString, function(err, result) {
             if (err) throw err;
+            console.log("orm.js updateOne()")
             console.log(result);
+            cb(result);
           });
     },
+
+    
 }
 
 
