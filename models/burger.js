@@ -1,18 +1,24 @@
-var orm = require("./config/orm.js");
+var orm = require("../config/orm.js");
 
 
 var getBurger = {
 
-    allBurgers: function(table) {
-        orm.selectAll(table)
+    allBurgers: function(cb) {
+        orm.selectAll("burgers", function(res) {
+            console.log("inside burger.js")
+            cb(res);
+        })
     }
 
 }
 
-orm.selectAll();
+// getBurger.allBurgers();
 
-orm.insertOne(newName);
+// orm.selectAll();
 
-orm.updateOne(id);
+// orm.insertOne(newName);
+
+// orm.updateOne(id);
 
 
+module.exports = getBurger;

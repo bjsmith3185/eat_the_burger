@@ -1,14 +1,17 @@
-var connection = require("connection.js");
+var connection = require("../config/connection.js");
 
 
 
 var orm = {
-    selectAll: function(table, callback) {
-        var queryString = "SELECT * FROM ?;";
-        connection.query(queryString, [`table = '${table}'`], function(err, result){
+    selectAll: function(table, cb) {
+        // var queryString = "SELECT * FROM ?;";
+        var queryString = "SELECT * FROM burgers;";
+        // connection.query(queryString, [`table = '${table}'`], function(err, result){
+            connection.query(queryString, function(err, result){
             if(err) throw err;
+            console.log("orm.js page")
             console.log(result);
-            return(result);
+            cb(result);
         })
         
     },
