@@ -1,15 +1,18 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+// var methodOverride = require("method-override");
 var routes = require("./controllers/burger_controller.js");
 
 var app = express();
 
 app.use(express.static(__dirname + "/public"))
+
 app.use(bodyParser.urlencoded({
   extended: true
 }))
 
+// app.use(methodOverride("_method"))
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

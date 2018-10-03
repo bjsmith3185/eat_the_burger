@@ -14,15 +14,16 @@
           {{#each burgers}}
           {{#unless this.devoured}}
           <li>
-            <p>{{this.id}}. {{this.burger_name}}
+            <div>{{this.burger_name}}
               <span>
                 <form method="POST" action="/burger/update?_method=PUT">
                   <input type="hidden" name="id" value="{{this.id}}">
                   <button type="submit">Devour burger!</button>
                 </form>
               </span>
-            </p>
+            </div>
           </li>
+          <br>
           {{/unless}}
           {{/each}}
         </ul>
@@ -31,7 +32,7 @@
 
     <div class="col-lg-2 text-center col3">
       <div class="image-area text-center">
-        <img class="image-info text-center" src="../public/assets/img/yellow_burger.jpg">
+        <img class="image-info text-center" src="/assets/img/yellow_burger.jpg">
       </div>
     </div>
 
@@ -43,7 +44,7 @@
           {{#each burgers}}
           {{#if this.devoured}}
           <li>
-            <p>{{this.id}}. {{this.burger_name}} </p>
+            <p>{{this.burger_name}} </p>
             <br>
           </li>
           {{/if}}

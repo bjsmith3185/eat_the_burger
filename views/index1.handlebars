@@ -1,21 +1,15 @@
-<br>
-<br>
-<h4 class="text-center">Eat the burgers</h4>
-<hr>
-<br>
-
+<div class="main-title text-center">Eat the Burgers!</div>
 
 <div class="container">
-  <div class="title text-center">
-    <div> click on the devour button to move to the devoured list</div>
-    <div> or add a new burger at the bottom of the page.</div>
+  <div class="sub-title text-center">
+    <div>*** Add a burger and then devour it, just for fun. ***</div>
   </div>
 
-  <hr>
   <div class="row">
-    <div class="col-lg-6 text-center">
+    <div class="col-lg-1 text-center col1"></div>
+    <div class="col-lg-4 text-center col2">
       <div class="not-eaten text-center">
-        <h4>Burgers not eaten.</h4>
+        <h4 class="burger-heading">Burgers ready to eat.</h4>
         <ul>
           {{#each burgers}}
           {{#unless this.devoured}}
@@ -35,9 +29,16 @@
       </div>
     </div>
 
-    <div class="col-lg-6 text-center">
+    <div class="col-lg-2 text-center col3">
+      <div class="image-area text-center">
+        <img class="image-info text-center" src="/assets/img/yellow_burger.jpg">
+      </div>
+    </div>
+
+
+    <div class="col-lg-4 text-center col4">
       <div class="eaten text-center">
-        <h4>Burgers that have been eaten</h4>
+        <h4 class="burger-heading">Burgers you Devoured!</h4>
         <ul>
           {{#each burgers}}
           {{#if this.devoured}}
@@ -50,6 +51,7 @@
         </ul>
       </div>
     </div>
+    <div class="col-lg-1 text-center col5"></div>
   </div>
   <br>
   <hr>
@@ -59,7 +61,7 @@
     <div class="col-lg-12 text-center">
       <div class="add-area text-center">
 
-        <h2 class="text-center">Add burger</h2>
+        <h2 class="text-center">Add A Burger! (get creative)</h2>
 
         <form class="text-center" method="POST" action="/burger/add">
           <input type="text" name="name">
@@ -68,6 +70,10 @@
       </div>
     </div>
   </div>
-
-
 </div>
+
+<footer class="footer-area text-center">
+  <div class="footer-info txt-center">
+    Created by BJ Smith, with the help of Node.js
+  </div>
+</footer>
