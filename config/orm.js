@@ -33,6 +33,16 @@ var orm = {
             cb(result);
           });
     },
+
+    deleteOne: function(table, name, cb) {
+        var queryString = `DELETE FROM ${table} WHERE burger_name = '${name}'; `;
+        connection.query(queryString, function(err, result) {
+            if (err) throw err;
+            // console.log("orm.js updateOne()")
+            // console.log(result);
+            cb(result);
+          });
+    },
     
 }
 

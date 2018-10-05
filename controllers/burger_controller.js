@@ -1,5 +1,5 @@
 
-// this will be all the app.gets and router.put 
+// this will be all the router.get router.post's
 
 
 var express = require("express");
@@ -19,8 +19,12 @@ router.get("/", function (req, res) {
     });
 });
 
-router.post("/burger/update", function(req, res) {
-    getBurger.updateBurger(req.body.id, function(result) {
+router.post("/burger/update/:id", function(req, res) {
+    
+    getBurger.updateBurger(req.params.id, function(result) {
+
+    
+    // getBurger.updateBurger(req.body.id, function(result) {
 
         res.redirect("/");
     })
@@ -29,6 +33,14 @@ router.post("/burger/update", function(req, res) {
 
 router.post("/burger/add", function(req, res) {
     getBurger.addBurger(req.body.name, function(result) {
+
+        res.redirect("/");
+    })
+})
+
+router.post("/burger/delete", function(req, res) {
+    console.log(req.body.name);
+    getBurger.deleteBurger(req.body.name, function(result) {
 
         res.redirect("/");
     })

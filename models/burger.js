@@ -19,6 +19,12 @@ var getBurger = {
         orm.insertOne("burgers", name, function(res) {
             cb(res);
         })
+    },
+
+    deleteBurger: function(name, cb) {
+        orm.deleteOne("burgers", name, function(res) {
+            cb(res);
+        })
     }
 
 };
